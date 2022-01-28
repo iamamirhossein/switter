@@ -12,3 +12,4 @@ class Profile(models.Model):
         symmetrical=False,
         blank=True,
     )
+    bio = models.TextField(blank=True)
