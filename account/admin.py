@@ -1,5 +1,12 @@
 from django.contrib import admin
 from account.models import Profile
+
+
 # Register your models here.
 
-admin.site.register(Profile)
+class AdminProfile(admin.ModelAdmin):
+    list_display = ['user', 'bio', 'is_private',]
+    list_filter = ['user']
+
+
+admin.site.register(Profile, AdminProfile)
