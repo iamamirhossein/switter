@@ -13,3 +13,6 @@ class Profile(models.Model):
         blank=True,
     )
     bio = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.user.username
