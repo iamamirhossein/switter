@@ -13,6 +13,7 @@ class Profile(models.Model):
         blank=True,
     )
     bio = models.TextField(blank=True)
+    is_private = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.username
