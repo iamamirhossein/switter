@@ -9,4 +9,4 @@ class ProfileListView(ListView):
     template_name = 'switter/profiles.html'
 
     def get_queryset(self):
-        return Profile.objects.filter(is_private=False)
+        return Profile.objects.filter(is_active=True)
