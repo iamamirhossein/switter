@@ -22,6 +22,7 @@ class Profile(models.Model):
     bio = models.TextField(blank=True)
     is_private = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+    avatar = models.ImageField(null=True)
 
     def __str__(self):
         return self.user.username

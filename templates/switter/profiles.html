@@ -23,7 +23,15 @@
                 </p>
                 <p class="subtitle is-6">
                   @{{ object.user.username|lower }}
+
+                    {% if object.is_private %}
+                        <span class="tag is-danger">
+                          Private
+                        </span>
+                    {% endif %}
+
                 </p>
+
               </div>
             </div>
           </div>
