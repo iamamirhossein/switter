@@ -11,7 +11,7 @@ class ProfileInline(admin.StackedInline):
 
 class UserAdmin(admin.ModelAdmin):
     model = User
-    fields = ['username', 'email']
+    fields = ['username', 'email', 'first_name', 'last_name',]
     inlines = [ProfileInline]
 
 
@@ -22,7 +22,7 @@ admin.site.register(User, UserAdmin)
 # Register your models here.
 
 class AdminProfile(admin.ModelAdmin):
-    list_display = ['user', 'bio', 'is_private', ]
+    list_display = ['user', 'complete_name', 'bio', 'is_private']
     list_filter = ['user']
 
 
