@@ -1,0 +1,64 @@
+{% extends 'switter/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="column">
+
+    <div class="block">
+    <h1 class="title is-1">
+        {{ object.user.username|upper }}'s Sweets
+    </h1>
+        <h5>
+            {{ object.bio }}
+        </h5>
+    </div>
+
+</div>
+
+<div class="column is-one-third">
+
+    <div class="block">
+        <a href="{% url 'account:profiles' %}">
+            <button class="button is-dark is-outlined is-fullwidth">
+                All Profiles
+            </button>
+        </a>
+    </div>
+
+    <div class="block">
+        <h3 class="title is-4">
+            {{ object.user.username }} follows:
+        </h3>
+        <div class="content">
+            <ul>
+            {% for following in object.follows.all %}
+                <li>
+                    <a href="#">
+                        {{ following }}
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="block">
+        <h3 class="title is-4">
+            {{ object.user.username }} is followed by:
+        </h3>
+        <div class="content">
+            <ul>
+            {% for follower in object.followed_by.all %}
+                <li>
+                    <a href="#">
+                        {{ follower }}
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}
