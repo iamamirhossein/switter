@@ -10,7 +10,7 @@ class Profile(models.Model):
         symmetrical=False,
         blank=True,
     )
-    bio = models.TextField(blank=True)
+    bio = models.CharField(blank=True, max_length=300)
     is_private = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     avatar = models.ImageField(null=True, upload_to='img/profiles/')
