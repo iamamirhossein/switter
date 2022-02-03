@@ -22,7 +22,7 @@ admin.site.register(User, UserAdmin)
 # Register your models here.
 
 class AdminProfile(admin.ModelAdmin):
-    list_display = ['user', 'complete_name', 'is_active', 'bio', 'is_private']
+    list_display = ['user', 'complete_name', 'is_active', 'is_private']
     list_filter = ['user', 'is_active']
 
 
