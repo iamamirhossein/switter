@@ -9,18 +9,21 @@
         {{ object.user.username|upper }}'s Sweets
     </h1>
     {% if object.user != user %}
-        <div class="buttons has-addons">
-            {% if object in user.profile.follows.all %}
-                <button class="button is-danger">Unfollow</button>
-            {% else %}
-                <button class="button is-success">Follow</button>
-            {% endif %}
-        </div>
+        <form method="post">
+            {% csrf_token %}
+            <div class="buttons has-addons">
+                {% if object in user.profile.follows.all %}
+                    <button class="button is-danger" name="follow" value="unfollow">Unfollow</button>
+                {% else %}
+                    <button class="button is-success" name="follow" value="follow">Follow</button>
+                {% endif %}
+            </div>
+        </form>
     {% endif %}
 
-        {% if not object.is_private %}
+        {% if not object.is_private or user.profile in object.followed_by.all %}
             <h5>
-                {{ object.bio }}
+                {{ object.bio|safe }}
             </h5>
         {% endif %}
     </div>
@@ -36,7 +39,7 @@
             </button>
         </a>
     </div>
-    {% if not object.is_private %}
+    {% if not object.is_private or user.profile in object.followed_by.all %}
         <div class="block">
             <h3 class="title is-4">
                 {{ object.user.username }} follows:
@@ -45,7 +48,7 @@
                 <ul>
                 {% for following in object.follows.all %}
                     <li>
-                        <a href="#">
+                        <a href="{% url 'account:profile-detail' following %}">
                             {{ following }}
                         </a>
                     </li>
@@ -62,7 +65,7 @@
                 <ul>
                 {% for follower in object.followed_by.all %}
                     <li>
-                        <a href="#">
+                        <a href="{% url 'account:profile-detail' follower %}">
                             {{ follower }}
                         </a>
                     </li>
