@@ -8,6 +8,16 @@
     <h1 class="title is-1">
         {{ object.user.username|upper }}'s Sweets
     </h1>
+    {% if object.user != user %}
+        <div class="buttons has-addons">
+            {% if object in user.profile.follows.all %}
+                <button class="button is-danger">Unfollow</button>
+            {% else %}
+                <button class="button is-success">Follow</button>
+            {% endif %}
+        </div>
+    {% endif %}
+
         {% if not object.is_private %}
             <h5>
                 {{ object.bio }}
