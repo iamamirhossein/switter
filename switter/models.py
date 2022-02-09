@@ -9,6 +9,13 @@ class Sweet(models.Model):
     draft = models.BooleanField(default=False)
     re_sweet = models.BooleanField(default=True)
 
+    def __str__(self):
+        return self.body
+
+    @property
+    def faves_count(self):
+        return self.faves.count()
+
 
 class Fave(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='faves')
