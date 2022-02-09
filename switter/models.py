@@ -7,6 +7,7 @@ class Sweet(models.Model):
     body = models.CharField(max_length=250)
     created_at = models.DateTimeField(auto_now_add=True)
     draft = models.BooleanField(default=False)
+    re_sweet = models.BooleanField(default=True)
 
 
 class Fave(models.Model):
