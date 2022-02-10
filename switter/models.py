@@ -10,7 +10,7 @@ class Sweet(models.Model):
     re_sweet = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.body
+        return self.body[:45]
 
     @property
     def faves_count(self):
