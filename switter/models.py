@@ -21,3 +21,6 @@ class Fave(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='faves')
     sweet = models.ForeignKey(Sweet, on_delete=models.CASCADE, related_name='faves')
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.username + ' - ' + self.sweet.body[:30]

@@ -8,3 +8,4 @@ class SweetAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Sweet, SweetAdmin)
+admin.site.register(Fave)
