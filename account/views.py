@@ -2,6 +2,10 @@ from django.shortcuts import get_object_or_404
 from django.db.models import F
 from django.views.generic import ListView, DetailView
 from .models import Profile
+from django.shortcuts import redirect
+
+def view_404(request, exception=None):
+    return redirect('switter:home')
 
 
 class ProfileListView(ListView):
