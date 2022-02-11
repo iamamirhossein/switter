@@ -2,13 +2,10 @@ from django.shortcuts import get_object_or_404
 from django.db.models import F
 from django.views.generic import ListView, DetailView
 from .models import Profile
-from django.shortcuts import redirect
-
-def view_404(request, exception=None):
-    return redirect('switter:home')
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class ProfileListView(ListView):
+class ProfileListView(LoginRequiredMixin, ListView):
     model = Profile
     paginate_by = 10
     template_name = 'switter/profiles.html'
@@ -17,7 +14,7 @@ class ProfileListView(ListView):
         return Profile.objects.filter(is_active=True)
 
 
-class ProfileView(DetailView):
+class ProfileView(LoginRequiredMixin, DetailView):
     model = Profile
     queryset = Profile.objects.filter(is_active=True).annotate(slug=F('user__username'))
     template_name = 'switter/profile.html'
