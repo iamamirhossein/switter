@@ -2,5 +2,5 @@ from django.shortcuts import render
 
 
 def home(request):
-    return render(request, "switter/base.html")
+    return render(request, "switter/dashboard.html")
 
