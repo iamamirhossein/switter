@@ -28,6 +28,18 @@
         {% endif %}
     </div>
 
+    <div class="content">
+        {% for sweet in profile.user.sweets.published %}
+            <div class="box">
+                {{ sweet.body }}
+                <span class="is-small has-text-grey-light">
+                    ({{ sweet.created_at }})
+                </span>
+            </div>
+        {% endfor %}
+    </div>
+
+
 </div>
 
 <div class="column is-one-third">
