@@ -14,7 +14,7 @@ class ProfileListView(LoginRequiredMixin, ListView):
         return Profile.objects.filter(is_active=True)
 
 
-class ProfileView(LoginRequiredMixin, DetailView):
+class ProfileView(DetailView):
     model = Profile
     queryset = Profile.objects.filter(is_active=True).annotate(slug=F('user__username'))
     template_name = 'switter/profile.html'
