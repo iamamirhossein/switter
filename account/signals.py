@@ -7,5 +7,7 @@ from .models import Profile
 @receiver(signal=post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
     if created:
-        profile = Profile(user=instance, )
+        profile = Profile(user=instance,)
+        profile.save()
+        profile.follows.set([instance.profile.pk])
         profile.save()
