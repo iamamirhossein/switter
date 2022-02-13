@@ -29,7 +29,7 @@
     </div>
     {% if not object.is_private or user.profile in object.followed_by.all %}
         <div class="content">
-        {% for sweet in profile.user.sweets.published %}
+        {% for sweet in object.user.sweets.published %}
             <div class="box">
                 {{ sweet.body }}
                 <span class="is-small has-text-grey-light">
