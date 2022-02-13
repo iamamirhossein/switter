@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class SweetManager(models.Manager):
 
     def published(self):
-        return self.filter(draft=False)
+        return self.filter(draft=False).order_by('-created_at')
 
 
 class Sweet(models.Model):
