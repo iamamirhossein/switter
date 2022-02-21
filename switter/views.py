@@ -1,7 +1,17 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
 from .forms import SweetForm
+from .models import Sweet
+from .mixins import FieldsMixin, FormValidMixin
 
 
 def home(request):
     form = SweetForm
     return render(request, "switter/dashboard.html", {"form": form})
+
+
+class SweetCreate(FieldsMixin, FormValidMixin, CreateView):
+    model = Sweet
+    success_url = reverse_lazy('switter:home')
+    template_name = 'switter/dashboard.html'
