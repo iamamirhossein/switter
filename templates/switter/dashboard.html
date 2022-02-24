@@ -14,6 +14,13 @@
         {% endfor %}
     {% endfor %}
 </div>
+<div class="block">
+    <a href="{% url 'account:profiles' %} ">
+        <button class="button is-success is-light is-outlined is-fullwidth">
+            My Profile
+        </button>
+    </a>
+</div>
 
 <div class="column is-one-third">
     <form method="POST" action="{% url 'switter:sweet_create' %}">
