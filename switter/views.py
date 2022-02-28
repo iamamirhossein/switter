@@ -11,6 +11,10 @@ def home(request):
     return render(request, "switter/dashboard.html", {"form": form})
 
 
+def drafts(request):
+    return render(request, "switter/drafts.html")
+
+
 class SweetCreate(FieldsMixin, FormValidMixin, CreateView):
     model = Sweet
     success_url = reverse_lazy('switter:home')
