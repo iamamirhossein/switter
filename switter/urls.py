@@ -5,5 +5,6 @@ app_name = "switter"
 
 urlpatterns = [
     path('', views.home, name="home"),
+    path('sweet/drafts', views.drafts, name="drafts"),
     path('sweet/create/', views.SweetCreate.as_view(), name='sweet_create'),
 ]
