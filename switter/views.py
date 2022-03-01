@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DeleteView
 from .forms import SweetForm
 from .models import Sweet
-from .mixins import FieldsMixin, FormValidMixin
+from .mixins import FieldsMixin, FormValidMixin, AuthorAccessMixin
 
 
 def home(request):
@@ -19,3 +19,8 @@ class SweetCreate(FieldsMixin, FormValidMixin, CreateView):
     model = Sweet
     success_url = reverse_lazy('switter:home')
     template_name = 'switter/dashboard.html'
+
+
+class SweetDeleteView(AuthorAccessMixin, DeleteView):
+    model = Sweet
+    success_url = reverse_lazy('switter:home')
