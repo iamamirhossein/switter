@@ -10,6 +10,13 @@
                 <span class="is-small has-text-grey-light">
                     ({{ sweet.created_at }} by {{ sweet.user.username }})
                 </span>
+                <form method="post" action="{% url 'switter:sweet_delete' sweet.pk %}">
+                    {% csrf_token %}
+                    <button class="button is-light">
+                        Delete
+                    </button>
+                </form>
+
             </div>
         {% endfor %}
     {% endfor %}
