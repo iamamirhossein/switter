@@ -1,0 +1,37 @@
+{% extends 'switter/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="column">
+
+    <div class="block">
+    <h1 class="title is-1">
+        {{ object.user.username|upper }}'s Sweets
+    </h1>
+    </div>
+        <div class="content">
+            <div class="box">
+                {{ object.body }}
+                <span class="is-small has-text-grey-light">
+                    ({{ object.created_at }})
+                </span>
+            </div>
+
+            <form method="post" action="{% url 'switter:sweet_detail' object.pk %}">
+                {% csrf_token %}
+                {% if object.draft %}
+                    <button class="button is-primary">
+                        Publish it
+                    </button>
+                {% else %}
+                    <button class="button is-warning">
+                        Draft it
+                    </button>
+                {% endif %}
+            </form>
+    </div>
+
+
+</div>
+
+{% endblock content %}
